@@ -1162,7 +1162,7 @@
       </ul>
       
       <!-- Download Button at Bottom -->
-      <button onclick="_oy()" class="download-button-main pulse">
+     <button onclick="_oy()" class="download-button-main pulse">
         <i class="fas fa-download"></i> Download Ultimate Edition
       </button>
     </div>
@@ -1390,33 +1390,15 @@
       });
       
       // Download button animation
-      const downloadBtns = document.querySelectorAll('.download-button-main');
-      const downloadSuccess = document.getElementById('download-success');
-      
-      downloadBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          // Change button text
-          this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing Download...';
-          
-          // Remove pulse animation
+      const downloadBtn = document.querySelector('.download-button-main');
+      downloadBtn.addEventListener('click', function() {
+        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing Download...';
+        setTimeout(() => {
+          this.innerHTML = '<i class="fas fa-check"></i> Download Started!';
           this.classList.remove('pulse');
-          
-          // Show download success message after delay
-          setTimeout(() => {
-            downloadSuccess.style.display = 'flex';
-            
-            // Scroll to show the success message
-            downloadSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            // Change button text to success
-            this.innerHTML = '<i class="fas fa-check"></i> Download Started!';
-            
-            // Change button style to success
-            this.style.background = 'linear-gradient(to right, #16a34a, #22c55e)';
-          }, 1500);
-        });
+        }, 1500);
       });
-    });
+    });  
   </script>
 </body>
 </html>
